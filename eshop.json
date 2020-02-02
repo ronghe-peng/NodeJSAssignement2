@@ -28,14 +28,14 @@
   ],
   "shoppingcart": [
     {
+      "name": "Dog",
+      "price": "550 kr",
+      "picture": "https://placeimg.com/640/480/any?t=1579700746583"
+    },
+    {
       "name": "Jacket",
       "price": "1100 kr",
       "picture": "https://placeimg.com/640/480/any?t=1579700697035"
-    },
-    {
-      "name": "Mobile",
-      "price": "2000 kr",
-      "picture": "https://placeimg.com/640/480/any?t=1579700794272"
     }
   ]
 }
