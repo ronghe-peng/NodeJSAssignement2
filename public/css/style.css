@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: auto;
+  text-align: center;
+  align-items: center;
+  background-color: #f6f6ed;
+}
+main {
+  margin: auto;
+  text-align: center;
+  align-items: center;
+}
+nav {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  border-bottom: solid #425d49 2px;
+  border-top: solid #425d49 2px;
+}
+ul {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+li {
+  margin: auto;
+  padding: 20px 50px 20px 50px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+.navA {
+  text-decoration: none;
+  font-family: "Kalam", cursive;
+  font-size: 23px;
+  color: #425d49;
+}
+.navA:hover {
+  -webkit-text-stroke: 2px #425d49;
+  -webkit-text-fill-color: #f6f6ed;
+}
+h1,
+h2 {
+  color: #425d49;
+  font-family: "Kalam", cursive;
+}
+h4,
+p {
+  color: #425d49;
+  font-family: "Source Serif Pro", serif;
+}
+.displayProduct,
+.displayItem {
+  margin: auto;
+  max-width: 880px;
+  margin-top: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+}
+.product {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 50px 0px 50px;
+  border: solid #425d49 1px;
+  border-radius: 10px;
+}
+img {
+  margin: 0.5rem;
+  max-width: 300px;
+  background-size: cover;
+  background-position: center;
+  align-self: left;
+  border-radius: 5px;
+}
+.name {
+  margin: 0.5rem;
+  text-align: center;
+}
+.price {
+  margin: 0.5rem;
+  text-align: center;
+}
+button {
+  margin: 0.5rem;
+  width: 130px;
+  height: 40px;
+  background-color: #425d49;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #f6f6ed;
+  font-family: "Kalam", cursive;
+  font-size: 15px;
+  cursor: pointer;
+}
+button:hover,
+:active {
+  background-color: #a7bbac;
+  border: solid #425d49 1px;
+  color: #425d49;
+}
+
+@media only screen and (max-width: 900px) {
+  .displayProduct,
+  .displayItem {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
