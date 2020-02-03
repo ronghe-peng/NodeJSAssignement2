@@ -1,12 +1,29 @@
 const addToCartButton = document.querySelectorAll(".button");
-/*let getName = document.querySelector(".name");
-let getPrice = document.querySelector(".price");
-let getPic = document.querySelector(".pic");*/
 const displayItems = document.querySelector(".displayProduct");
-//const productDiv = document.querySelectorAll('.product')
 const baseURL = "http://localhost:8000/api";
 
-//const product = event.target.parentNode.children;
+// Check if item is in shooping cart. If yes, disable 'add' button
+
+const url = baseURL + "/shoppingcart";
+fetch(url, { method: "GET" })
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+
+    data.forEach(data => {
+      //console.log(data.name);
+      let itemName = data.name;
+      let getBtn = document.getElementById(`${itemName}`);
+      getBtn.classList.remove("button");
+      getBtn.classList.add("block");
+      getBtn.disabled = true;
+      getBtn.innerHTML = "Item Added";
+    });
+  });
+
+//Insert function
 
 const insert = product => {
   console.log(product);
@@ -36,17 +53,16 @@ const insert = product => {
       console.log(data);
       console.log(data.message);
       //window.alert(data.message);
-      let btnId = btn.id;
-      let changeBtn = document.getElementById(btnId);
-      changeBtn.innerHTML = "Item Added";
-      console.log(changeBtn);
-      changeBtn.classList.remove("button");
-      changeBtn.classList.add("block");
-      changeBtn.disabled = true;
-      changeBtn.innerHTML = "Item Added";
-    });
 
-  console.log("pic:", pic, "name:", name, "price:", price); // sucess
+      // Disable button when item is added
+      let btnId = btn.id;
+      let disableBtn = document.getElementById(btnId);
+
+      disableBtn.classList.remove("button");
+      disableBtn.classList.add("block");
+      disableBtn.disabled = true;
+      disableBtn.innerHTML = "Item Added";
+    });
 };
 
 const updateCart = event => {
@@ -56,6 +72,8 @@ const updateCart = event => {
 
   insert(product);
 };
+
+// Add function to each button
 
 addToCartButton.forEach(div => {
   div.addEventListener("click", updateCart);
@@ -74,14 +92,36 @@ addToCartButton.forEach(div => {
     .then(data => {
       console.log(data);
       displayProducts(data);
+      CheckCart()
     });
 };
+
+const CheckCart = () => {
+  const url = baseURL + "/shoppingcart";
+fetch(url, { method: "GET" })
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+
+    data.forEach(data => {
+      //console.log(data.name);
+      let itemName = data.name;
+      let getBtn = document.getElementById(`${itemName}`);
+      getBtn.classList.remove("button");
+      getBtn.classList.add("block");
+      getBtn.disabled = true;
+      getBtn.innerHTML = "Item Added";
+    });
+  });
+}
+
 const displayProducts = products => {
   for (let i = 0; i < products.length; i++) {
     let product = document.createElement("div");
     product.setAttribute("class", "product");
-    product.setAttribute("id", products[i].name); // set item's name as the element's id.
-
+    
     let nameElem = document.createElement("h4");
     let priceElem = document.createElement("p");
     let picElem = document.createElement("img");
@@ -91,6 +131,7 @@ const displayProducts = products => {
     priceElem.setAttribute("class", "price");
     buttonElem.setAttribute("class", "addItemButton");
     buttonElem.setAttribute("type", "submit");
+    buttonElem.setAttribute("id", `${products[i].name}`);
     picElem.setAttribute("class", "pic");
 
     nameElem.innerHTML = products[i].name;

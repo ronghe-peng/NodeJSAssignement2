@@ -1,9 +1,6 @@
-//const showCartButton = document.querySelector("#getCart");
 const displayItems = document.querySelector(".displayItem");
 const baseURL = "http://localhost:8000/api";
 
-//const get = () => {
-//displayItems.innerHTML = null;
 console.log("start get");
 const url = baseURL + "/shoppingcart";
 console.log(url);
@@ -13,19 +10,16 @@ fetch(url, { method: "GET" })
   })
   .then(data => {
     console.log(data);
+    data.forEach(data => {
+      console.log(data.name);
+    });
     displayItem(data);
   });
-//};
+
 const deleteItem = name => {
   console.log("name =", name);
-  //let name = document.querySelector(".name").innerHTML;
-  //let price = document.querySelector(".price").innerHTML;
-  //let pic = document.querySelector(".pic").src;
+
   let removeProduct = document.querySelector(`#${name}`);
-  // let removeName = document.querySelectorAll(".name")[i];
-  // let removePrice = document.querySelectorAll(".price")[i];
-  // let removePic = document.querySelectorAll(".pic")[i];
-  // let removeBtn = document.querySelectorAll(".deleteButton")[i];
   const url = baseURL + "/shoppingcart/" + name;
   fetch(url, { method: "DELETE" })
     .then(response => {
@@ -73,31 +67,5 @@ const displayItem = items => {
     product.appendChild(buttonElem);
     product.appendChild(nameElem);
     product.appendChild(priceElem);
-    /*document
-      .querySelector(".deleteButton")
-      .addEventListener("click", deleteItem);*/
   }
 };
-/*const deleteItem = () => {
-  let name = document.querySelector(".name").innerHTML;
-  let price = document.querySelector(".price").innerHTML;
-  let pic = document.querySelector(".pic").src;
-  const url =
-    baseURL +
-    "/shoppingcart" +
-    "?name=" +
-    name +
-    "&price=" +
-    price +
-    "&picture=" +
-    pic;
-  fetch(url, { method: "DELETE" })
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-    });
-};*/
-
-//showCartButton.addEventListener("click", get);
