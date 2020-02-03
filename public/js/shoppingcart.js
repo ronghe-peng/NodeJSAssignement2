@@ -1,21 +1,21 @@
-const showCartButton = document.querySelector("#getCart");
+//const showCartButton = document.querySelector("#getCart");
 const displayItems = document.querySelector(".displayItem");
 const baseURL = "http://localhost:8000/api";
 
-const get = () => {
-  displayItems.innerHTML = null;
-  console.log("start get");
-  const url = baseURL + "/shoppingcart";
-  console.log(url);
-  fetch(url, { method: "GET" })
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      displayItem(data);
-    });
-};
+//const get = () => {
+//displayItems.innerHTML = null;
+console.log("start get");
+const url = baseURL + "/shoppingcart";
+console.log(url);
+fetch(url, { method: "GET" })
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    displayItem(data);
+  });
+//};
 const deleteItem = name => {
   console.log("name =", name);
   //let name = document.querySelector(".name").innerHTML;
@@ -99,4 +99,4 @@ const displayItem = items => {
     });
 };*/
 
-showCartButton.addEventListener("click", get);
+//showCartButton.addEventListener("click", get);
