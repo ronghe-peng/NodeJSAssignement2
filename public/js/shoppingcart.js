@@ -34,7 +34,7 @@ const deleteItem = name => {
     .then(data => {
       console.log(data);
       console.log(data.message);
-      window.alert(data.message);
+      //window.alert(data.message);
     });
   removeProduct.remove();
 };
@@ -54,6 +54,7 @@ const displayItem = items => {
     nameElem.setAttribute("class", "name");
     priceElem.setAttribute("class", "price");
     buttonElem.setAttribute("class", "deleteButton");
+    buttonElem.setAttribute("class", "button");
     buttonElem.setAttribute("type", "submit");
     picElem.setAttribute("class", "pic");
 

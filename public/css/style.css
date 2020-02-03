@@ -91,7 +91,7 @@ img {
   margin: 0.5rem;
   text-align: center;
 }
-button {
+.button {
   margin: 0.5rem;
   width: 130px;
   height: 40px;
@@ -103,10 +103,23 @@ button {
   font-size: 15px;
   cursor: pointer;
 }
-button:hover {
+.button:hover {
   background-color: #a7bbac;
   border: solid #425d49 1px;
   color: #425d49;
+}
+
+.block {
+  margin: 0.5rem;
+  width: 130px;
+  height: 40px;
+  background-color: #a7bbac;
+  border: solid #f6f6ed 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #f6f6ed;
+  font-family: "Kalam", cursive;
+  font-size: 15px;
 }
 
 @media only screen and (max-width: 900px) {

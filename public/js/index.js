@@ -3,6 +3,7 @@ const addToCartButton = document.querySelectorAll(".button");
 let getPrice = document.querySelector(".price");
 let getPic = document.querySelector(".pic");*/
 const displayItems = document.querySelector(".displayProduct");
+//const productDiv = document.querySelectorAll('.product')
 const baseURL = "http://localhost:8000/api";
 
 //const product = event.target.parentNode.children;
@@ -13,6 +14,10 @@ const insert = product => {
   const pic = product[0].src;
   const name = product[1].innerHTML;
   const price = product[2].innerHTML;
+  const btn = product[3];
+
+  console.log(btn);
+
   const url =
     baseURL +
     "/shoppingcart" +
@@ -30,14 +35,24 @@ const insert = product => {
     .then(data => {
       console.log(data);
       console.log(data.message);
-      window.alert(data.message);
+      //window.alert(data.message);
+      let btnId = btn.id;
+      let changeBtn = document.getElementById(btnId);
+      changeBtn.innerHTML = "Item Added";
+      console.log(changeBtn);
+      changeBtn.classList.remove("button");
+      changeBtn.classList.add("block");
+      changeBtn.disabled = true;
+      changeBtn.innerHTML = "Item Added";
     });
+
   console.log("pic:", pic, "name:", name, "price:", price); // sucess
 };
 
 const updateCart = event => {
   event.preventDefault();
   const product = event.target.parentNode.children;
+  console.log(product);
 
   insert(product);
 };
