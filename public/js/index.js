@@ -1,5 +1,6 @@
+import { insert } from "./modules/module.js";
 const addToCartButton = document.querySelectorAll(".button");
-const displayItems = document.querySelector(".displayProduct");
+
 const baseURL = "http://localhost:8000/api";
 
 // Check if item is in shooping cart. If yes, disable 'add' button
@@ -23,48 +24,6 @@ fetch(url, { method: "GET" })
     });
   });
 
-//Insert function
-
-const insert = product => {
-  console.log(product);
-  console.log(product[0]);
-  const pic = product[0].src;
-  const name = product[1].innerHTML;
-  const price = product[2].innerHTML;
-  const btn = product[3];
-
-  console.log(btn);
-
-  const url =
-    baseURL +
-    "/shoppingcart" +
-    "?name=" +
-    name +
-    "&price=" +
-    price +
-    "&picture=" +
-    pic;
-
-  fetch(url, { method: "POST" })
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      console.log(data.message);
-      //window.alert(data.message);
-
-      // Disable button when item is added
-      let btnId = btn.id;
-      let disableBtn = document.getElementById(btnId);
-
-      disableBtn.classList.remove("button");
-      disableBtn.classList.add("block");
-      disableBtn.disabled = true;
-      disableBtn.innerHTML = "Item Added";
-    });
-};
-
 const updateCart = event => {
   event.preventDefault();
   const product = event.target.parentNode.children;
@@ -79,10 +38,13 @@ addToCartButton.forEach(div => {
   div.addEventListener("click", updateCart);
 });
 
+//////////////////
 // Do the same thing, if html contents are not hard coded in.
 
+//const displayProducts = document.querySelector(".displayProduct");
+
 /*const get = () => {
-  displayItems.innerHTML = null;
+  displayProducts.innerHTML = null;
   const url = baseURL + "/product";
   console.log(url);
   fetch(url, { method: "GET" })
@@ -168,7 +130,7 @@ const displayProducts = products => {
         });
     };
 
-    displayItems.append(product);
+    displayProducts.append(product);
     product.appendChild(picElem);
     product.appendChild(buttonElem);
     product.appendChild(nameElem);

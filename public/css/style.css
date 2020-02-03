@@ -91,7 +91,8 @@ img {
   margin: 0.5rem;
   text-align: center;
 }
-.button {
+.button,
+.redirect {
   margin: 0.5rem;
   width: 130px;
   height: 40px;
@@ -103,7 +104,8 @@ img {
   font-size: 15px;
   cursor: pointer;
 }
-.button:hover {
+.button:hover,
+.redirect:hover {
   background-color: #a7bbac;
   border: solid #425d49 1px;
   color: #425d49;

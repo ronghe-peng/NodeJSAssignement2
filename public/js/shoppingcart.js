@@ -1,4 +1,5 @@
-const displayItems = document.querySelector(".displayItem");
+import { displayItem } from "./modules/module.js";
+//const displayItems = document.querySelector(".displayItem");
 const baseURL = "http://localhost:8000/api";
 
 console.log("start get");
@@ -15,57 +16,3 @@ fetch(url, { method: "GET" })
     });
     displayItem(data);
   });
-
-const deleteItem = name => {
-  console.log("name =", name);
-
-  let removeProduct = document.querySelector(`#${name}`);
-  const url = baseURL + "/shoppingcart/" + name;
-  fetch(url, { method: "DELETE" })
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      console.log(data.message);
-      //window.alert(data.message);
-    });
-  removeProduct.remove();
-};
-
-const displayItem = items => {
-  console.log("start display");
-  for (let i = 0; i < items.length; i++) {
-    let product = document.createElement("div");
-    product.setAttribute("class", "product");
-    product.setAttribute("id", items[i].name); // set item's name as the element's id.
-
-    let nameElem = document.createElement("h4");
-    let priceElem = document.createElement("p");
-    let picElem = document.createElement("img");
-    let buttonElem = document.createElement("button");
-
-    nameElem.setAttribute("class", "name");
-    priceElem.setAttribute("class", "price");
-    buttonElem.setAttribute("class", "deleteButton");
-    buttonElem.setAttribute("class", "button");
-    buttonElem.setAttribute("type", "submit");
-    picElem.setAttribute("class", "pic");
-
-    nameElem.innerHTML = items[i].name;
-    priceElem.innerHTML = items[i].price;
-    picElem.src = items[i].picture;
-    buttonElem.innerHTML = "Delete item";
-    buttonElem.addEventListener("click", e => {
-      console.log(e.target.parentNode.id);
-      let name = e.target.parentNode.id; // find the exact element in html file, and get the element's id
-      deleteItem(name);
-    });
-
-    displayItems.append(product);
-    product.appendChild(picElem);
-    product.appendChild(buttonElem);
-    product.appendChild(nameElem);
-    product.appendChild(priceElem);
-  }
-};
